@@ -17,6 +17,7 @@
 import webapp2
 import jinja2
 import random
+from dares import Dares
 
 env=jinja2.Environment(loader=jinja2.FileSystemLoader("templates"))
 
@@ -31,7 +32,7 @@ class MainHandler(webapp2.RequestHandler):
 class DareHandler(webapp2.RequestHandler):
     def get(self):
        template=env.get_template("dare.html")
-       dares={"dare1": "high five", "2" : "hug", "3": "smile"}
+       dares={"dare1": "high five", "dare2" : "hug", "dare3": "smile"}
        self.response.write(template.render(dares))
 
 
