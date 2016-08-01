@@ -29,7 +29,7 @@ class MainHandler(webapp2.RequestHandler):
 
 class DareHandler(webapp2.RequestHandler):
     def get(self):
-    	template=env.get_template("dare.html")
+       template=env.get_template("dare.html")
        data=["hug your mom", "give a high five to your legal guardian", "plant a flower","wave at someone"]
        self.response.write(template.render(data))
 
