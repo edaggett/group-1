@@ -47,12 +47,12 @@ class DareHandler(webapp2.RequestHandler):
 
        dare_query=Dares.query()
        dare_results=dare_query.fetch()
-       dare_result=dare_results[random.randint(0,len (dare_results))]
+       dare_result=dare_results[random.randint(0,len (dare_results)-1)]
 
        dare={}
        dare["number"]=dare_result.dare_number
        dare["dare"]=dare_result.dare
-       self.response.write(template.render(dares))
+       self.response.write(template.render(dare))
 
 
 app = webapp2.WSGIApplication([
