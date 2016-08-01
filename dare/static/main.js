@@ -1,0 +1,1 @@
+<button onclick = "window.location.href='dare.html'">Continue</button>
