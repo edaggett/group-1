@@ -23,13 +23,10 @@ from dares import Dares
 env=jinja2.Environment(loader=jinja2.FileSystemLoader("templates"))
 
 class MainHandler(webapp2.RequestHandler):
-    def get(self):
-       template=env.get_template("main.html")
-       
-       self.response.write(template.render())
-
-class LogInHandler():
 	def get(self):
+		template=env.get_template("main.html")
+		
+		self.response.write(template.render())
 		user = users.get_current_user()
 		if user:
 			greeting = ('Welcome, %s! (<a href="%s">sign out</a>)' %
@@ -41,30 +38,22 @@ class LogInHandler():
 		self.response.out.write('<html><body>%s</body></html>' % greeting)
 
 
+
 class DareHandler(webapp2.RequestHandler):
-    def get(self):
-       template=env.get_template("dare.html")
+	def get(self):
+	   template=env.get_template("dare.html")
 
-       dare_query=Dares.query()
-       dare_results=dare_query.fetch()
-       dare_result=dare_results[random.randint(0,len (dare_results)-1)]
+	   dare_query=Dares.query()
+	   dare_results=dare_query.fetch()
+	   dare_result=dare_results[random.randint(0,len (dare_results)-1)]
 
-       dare={}
-       dare["number"]=dare_result.dare_number
-       dare["dare"]=dare_result.dare
-       self.response.write(template.render(dare))
+	   dare={}
+	   dare["number"]=dare_result.dare_number
+	   dare["dare"]=dare_result.dare
+	   self.response.write(template.render(dare))
 
 
 app = webapp2.WSGIApplication([
-    ('/', MainHandler), ("/dare", DareHandler)
-
-
-
-
-
-
-
-
-
+	('/', MainHandler), ("/dare", DareHandler)
 
 ], debug=True)
