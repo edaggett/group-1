@@ -23,20 +23,23 @@ from dares import Dares
 env=jinja2.Environment(loader=jinja2.FileSystemLoader("templates"))
 
 class MainHandler(webapp2.RequestHandler):
-	def get(self):
-		template=env.get_template("main.html")
-		
-		self.response.write(template.render())
-		user = users.get_current_user()
-		if user:
-			greeting = ('Welcome, %s! (<a href="%s">sign out</a>)' %
-			(user.nickname(), users.create_logout_url('/')))
-		else:
-			greeting = ('<a href="%s">Sign in or register</a>.' %
-			users.create_login_url('/'))
 
-		self.response.out.write('<html><body>%s</body></html>' % greeting)
+    def get(self):
+        template=env.get_template("main.html")
+       
+        user = users.get_current_user()
+        data={}
+        if user:
+            greeting = ('Welcome, %s! (<a href="%s">sign out</a>)' %
+            (user.nickname(), users.create_logout_url('/')))
+            data['signed_in'] = True
+        else:
+            greeting = ('<a href="%s">Sign in or register</a>.' %
+            users.create_login_url('/'))
+            data["signed_in"]=False
 
+        
+        self.response.write(template.render(data))
 
 
 class DareHandler(webapp2.RequestHandler):
@@ -54,6 +57,7 @@ class DareHandler(webapp2.RequestHandler):
 
 
 app = webapp2.WSGIApplication([
-	('/', MainHandler), ("/dare", DareHandler)
+
+    ('/', MainHandler), ("/dare", DareHandler),
 
 ], debug=True)
