@@ -22,7 +22,8 @@ env=jinja2.Environment(loader=jinja2.FileSystemLoader("templates"))
 class MainHandler(webapp2.RequestHandler):
     def get(self):
        template=env.get_template("main.html")
-       self.response.write(template.render())
+       data=["hug your mom", "give a high five to your legal guardian", "plant a flower","wave at someone"]
+       self.response.write(template.render(data))
 
 app = webapp2.WSGIApplication([
     ('/', MainHandler)
