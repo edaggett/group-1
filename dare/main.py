@@ -18,6 +18,7 @@ from google.appengine.api import users
 import webapp2
 import jinja2
 import random
+import logging
 from dares import Dares
 
 env=jinja2.Environment(loader=jinja2.FileSystemLoader("templates"))
@@ -52,14 +53,27 @@ class DareHandler(webapp2.RequestHandler):
 	   dare_results=dare_query.fetch()
 	   dare_result=dare_results[random.randint(0,len (dare_results)-1)]
 
+    
 	   dare={}
 	   dare["number"]=dare_result.dare_number
 	   dare["dare"]=dare_result.dare
 	   self.response.write(template.render(dare))
 
+# class UserDare(webapp2.RequestHandler):
+#     def get(self):
+#         logging.info("WE MADE IT TO GET ========================")
+#         user_dare = Dares(dare="new dare2")
+#         user_dare.put()
+#         # template=env.get_template('form.html')
+#         # self.response.write(template.render())
+#     def post(self):
+#         # user_dare = Dares(dare="new dare2")
+#         # user_dare.put()
+
+
+              
 
 app = webapp2.WSGIApplication([
 
-    ('/', MainHandler), ("/dare", DareHandler),
-
+    ('/', MainHandler), ("/dare", DareHandler), #('/user', UserDare)
 ], debug=True)
