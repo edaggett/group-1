@@ -17,6 +17,7 @@
 import webapp2
 import jinja2
 import random
+from random import randint
 
 env=jinja2.Environment(loader=jinja2.FileSystemLoader("templates"))
 
@@ -27,12 +28,19 @@ class MainHandler(webapp2.RequestHandler):
        self.response.write(template.render())
 
 
-
 class DareHandler(webapp2.RequestHandler):
-    def get(self):
-       template=env.get_template("dare.html")
-       dares={"dare1": "high five", "2" : "hug", "3": "smile"}
-       self.response.write(template.render(dares))
+  def get(self):
+    template=env.get_template("dare.html")
+    dares={"dare1": "high five", "2" : "hug", "3": "smile"}
+    self.response.write(template.render(dares))
+  def get(self):
+		template=env.get_template("dare.html")
+		data = ["hug your mom", "give a high five to your legal guardian", "plant a flower", "wave at someone"]
+		random_item = random.randint(0, len(data))
+		the_dare = data[random_item]
+
+
+		self.response.write(template.render(the_dare))
 
 
 app = webapp2.WSGIApplication([
