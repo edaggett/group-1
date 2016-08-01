@@ -12,7 +12,7 @@ function setup() {
 	
     $("#kind").click(redirect_to_dare);
 
-    $('#submissions').click(redirect_main);
+    $('#submissions').click(redirect_to_main);
 
 }
 
