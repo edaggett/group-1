@@ -13,12 +13,16 @@ function redirect_to_user() {
 function setup() {
 
     $("#kind").click(redirect_to_dare);
-    if (#submissions==True):
-    	window.alert("You completed the dare! Your points have been recorded")
-    else:
-    	window.alert("Go try out the dare and spread a little kindness!")
-    $('#submissions').click(redirect_to_main);
+   
 
+    $('#submissions').click(redirect_to_main);
+  
+// if {
+//     	window.alert("You completed the dare! Your points have been recorded")
+//     }
+//     else{
+//     	window.alert("Go try out the dare and spread a little kindness!")
+//     }
     $("#user_dare").click(redirect_to_main);
 
 }
