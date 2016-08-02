@@ -5,7 +5,7 @@ class Points(ndb.Model):
 	userpoints= ndb.IntegerProperty(default=0)
 
 class Users(ndb.Model):
-	username=ndb.StringProperty(required=True)
+	user=ndb.StringProperty()
 	points=ndb.StructuredProperty(Points)
 	
 class Memories(ndb.Model):

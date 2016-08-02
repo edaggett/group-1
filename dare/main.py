@@ -20,6 +20,9 @@ import jinja2
 import random
 import logging
 from dares import Dares
+from users import Users
+from users import Memories
+from users import Points
 from google.appengine.ext import ndb
 
 env=jinja2.Environment(loader=jinja2.FileSystemLoader("templates"))
@@ -69,6 +72,14 @@ class UserDare(webapp2.RequestHandler):
         user_dare=self.request.get("daredare")
         d=Dares(dare=user_dare)
         d.put()
+        template=env.get_template("main.html")
+        self.response.write(template.render())
+
+class UserDare(webapp2.RequestHandler):
+    def post(self):
+        current_user=users.get_current_user()
+        u=Users(user=current_user, points=p)
+        u.put()
         template=env.get_template("main.html")
         self.response.write(template.render())
         
