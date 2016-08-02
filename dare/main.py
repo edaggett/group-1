@@ -66,17 +66,14 @@ class DareHandler(webapp2.RequestHandler):
 	   self.response.write(template.render(dare))
 
 class UserDare(webapp2.RequestHandler):
-    def get (self):
-        main_template=env.get_template("main.html")
-        self.response.out.write(template.render())
     def post(self):
         user_dare=self.request.get("daredare")
         d=Dares(dare=user_dare)
         d.put()
+        template=env.get_template("main.html")
+        self.response.write(template.render())
         
-
-              
-
+        
 app = webapp2.WSGIApplication([
 ('/user', UserDare),
      ("/dare", DareHandler), ('/', MainHandler)
