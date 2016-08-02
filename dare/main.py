@@ -20,9 +20,23 @@ import jinja2
 import random
 import logging
 from dares import Dares
+from users import DareUsers
+from users import Memories
+
 from google.appengine.ext import ndb
 
 env=jinja2.Environment(loader=jinja2.FileSystemLoader("templates"))
+
+def findUser (user):
+    find_dare_users=DareUsers.query().filter(DareUsers.user_id==user.user_id()).get()
+    if find_dare_users==None:
+        
+        current_user=users.get_current_user()
+        find_dare_users=DareUsers(user_id=current_user.user_id())
+        find_dare_users.put()
+    return find_dare_users
+
+
 
 class Dares(ndb.Model):
     dare_number=ndb.IntegerProperty(required=False)
@@ -47,6 +61,8 @@ class MainHandler(webapp2.RequestHandler):
             #data["signed_in"]=False
 
         data = {"LogIn" : greeting}
+        
+
         self.response.write(template.render(data))
 
 
@@ -71,9 +87,18 @@ class UserDare(webapp2.RequestHandler):
         d.put()
         template=env.get_template("main.html")
         self.response.write(template.render())
-        
+
+class DareCompleted (webapp2.RequestHandler):
+    def post (self):
+        if (self.request.get("completed_dare"))=="True":
+             user=users.get_current_user()
+             dare_completed_user=findUser(user)
+             dare_completed_user.points+=
+             dare_completed_user.put()
+        self.redirect("/")
+
+
         
 app = webapp2.WSGIApplication([
-('/user', UserDare),
-     ("/dare", DareHandler), ('/', MainHandler)
-], debug=True)
+('/userdare', UserDare),
+     ("/dare", DareHandler), ('/', MainHandler), ("/darecompleted", DareCompleted)], debug=True)
