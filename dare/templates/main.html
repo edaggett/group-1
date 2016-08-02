@@ -10,7 +10,7 @@
 
 	<header>  <!-- the header/ title bar-->
 		<div id='header'> 
-		<div style="margin-top: 50px; margin-right:30px">{{LogIn}}</div>
+		<div style="margin-top: 10px; margin-left:960px">{{LogIn}}</div>
 		<div id='type'> Dare </div>  
 
 		/;0
@@ -23,6 +23,7 @@
 	<nav> <!--navigaition bar for hyperlinks -->
 		<div class="nav">
 		<div class="nav">Home&nbsp;&nbsp; </div>
+		<div class="nav">My Dares&nbsp;&nbsp;</div>
 		<div class="nav">About Us&nbsp;&nbsp; </div>
 		<div class="nav">Memories&nbsp;&nbsp;</div>
 		</div>
@@ -32,19 +33,24 @@
 
 	<body>
 		<form>
-
 		<div style="text-align:center; margin-top:167px"><button id='kind' type="button"> Click Me For a Dare! </button></div>
 		</form>
 
+<<<<<<< Updated upstream
 
 
 		<form method="post" action="/userdare">
 		Enter a dare: <input type="text" name="daredare"></input>
 		<input type="submit" id = "user_dare" value="Submit"></input>
 
+=======
+		<form method="post" action="/user">
+			Enter a dare: <input type="text" name="daredare"></input>
+			<input type="submit" id = "user_dare" value="Submit"></input>
+>>>>>>> Stashed changes
 		</form>
 		<hr>
-	<body>	
+	</body>	
 
 		<footer>
 			<div id='footer'> 

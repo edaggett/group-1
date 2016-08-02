@@ -28,6 +28,7 @@
 #type {
 	font-size: 50px;
 	padding: 10px;
+	margin-top: 1px;
 }
 
 #bottom {
@@ -42,8 +43,13 @@
     float: left;
 }
 
-#sign{
+#sign {
 	margin-top: 50px
 	margin-right:30px;
 }
 
+#title {
+	font-size: 26px;
+	font-family: 'Tahoma', Geneva, sans-serif;
+	align: center;
+}
