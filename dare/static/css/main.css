@@ -13,8 +13,16 @@
 #bigbutton {
 	margin-top: 167px;
 }
+#greenHeader{
+	width: 100%;
+	height: 15% ;
+	background-color: #61a20c;
+	margin-top: 0px;
+	position: static;
 
-#header {
+	
+}
+/*#header {
 	background-color: #61a20c;
 	color: white;
 	position:absolute;        
@@ -24,7 +32,7 @@
 	height: 10%; 
 	padding: 20px;  
 }
-
+*/
 #type {
 	font-size: 50px;
 	padding: 10px;
@@ -38,10 +46,18 @@
 	width:100%;    
 	color: orange;  
 }
-.nav{
-    margin-top:50;
-    float: left;
+.top_button {
+	float:left;
+	margin-top: 8%;
+	margin-left: 8.5%;
+	margin-right:8.5%;
+
 }
+/*#dareSign{
+	float: left;
+	margin-left: 7%;
+	font-size: 30px;
+}*/
 
 #sign {
 	margin-top: 50px

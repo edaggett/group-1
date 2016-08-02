@@ -15,7 +15,10 @@ function submit_alert(){
     	}
     	else{
     	window.alert("Go try out the dare and spread a little kindness!")}}
+function change_color(){
 
+	
+}
 function setup() {
 
     $("#kind").click(redirect_to_dare);
