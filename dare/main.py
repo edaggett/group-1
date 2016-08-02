@@ -49,6 +49,7 @@ class MainHandler(webapp2.RequestHandler):
 
         self.response.write(greeting)
         self.response.write(template.render(data))
+   
 
 
 class DareHandler(webapp2.RequestHandler):
@@ -70,18 +71,14 @@ class UserDare(webapp2.RequestHandler):
         main_template=env.get_template("main.html")
         self.response.out.write(template.render())
     def post(self):
-        stored_template=env.get_template("main.html")
-
-        user_dare=self.request.get("dare")
-        logging.info(user_dare)
+        user_dare=self.request.get("daredare")
         d=Dares(dare=user_dare)
-        logging.info(d)
         d.put()
-        self.response.out.write(stored_template.render())
+        
 
               
 
 app = webapp2.WSGIApplication([
-
-    ('/', MainHandler), ("/dare", DareHandler), ('/user', UserDare)
+('/user', UserDare),
+     ("/dare", DareHandler), ('/', MainHandler)
 ], debug=True)

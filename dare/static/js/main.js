@@ -15,7 +15,8 @@ function setup() {
     $("#kind").click(redirect_to_dare);
 
     $('#submissions').click(redirect_to_main);
-    $("#user_dare").click(redirect_to_user);
+
+    $("#user_dare").click(redirect_to_main);
 
 }
 
