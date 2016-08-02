@@ -45,7 +45,7 @@ class Dares(ndb.Model):
 
 class MainHandler(webapp2.RequestHandler):
 
-<<<<<<< Updated upstream
+
 	def get(self):
 		template=env.get_template("main.html")
 	   
@@ -63,25 +63,6 @@ class MainHandler(webapp2.RequestHandler):
 
 		data = {"LogIn" : greeting}
 		
-=======
-    def get(self):
-        template=env.get_template("main.html")
-       
-        user = users.get_current_user()
-        
-        if user:
-            greeting = ('Welcome, %s! (<a href="%s">sign out</a>)' %
-            (user.nickname(), users.create_logout_url('/')))
-           # data["signed_in"]=True
-        else:
-            greeting = ('<a href="%s">Sign in or register</a>.' %
-            users.create_login_url('/'))
-            
-            #data["signed_in"]=False
-
-        data = {"LogIn" : greeting}
-        
->>>>>>> Stashed changes
 
 		self.response.write(template.render(data))
 
