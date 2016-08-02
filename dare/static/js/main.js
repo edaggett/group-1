@@ -2,6 +2,8 @@ function redirect_to_dare() {
 	window.location.replace("/dare");
 }
 
+$("p").mouseenter(function(){
+}
 
 function redirect_to_main() {
 	window.location.replace("/");
@@ -16,7 +18,10 @@ function setup() {
    
 
     $('#submissions').click(redirect_to_main);
-  
+
+    
+
+
 // if {
 //     	window.alert("You completed the dare! Your points have been recorded")
 //     }
