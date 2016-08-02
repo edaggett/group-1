@@ -1,4 +1,4 @@
-
+/*button that gives the dare*/
 #kind {
 	background-color: #4CAF50; 
     border: none;
@@ -10,6 +10,7 @@
     font-size: 16px;
     align: center;
 }
+
 #bigbutton {
 	margin-top: 167px;
 }
@@ -46,13 +47,18 @@
 	width:100%;    
 	color: orange;  
 }
+
 .top_button {
 	float:left;
 	margin-top: 8%;
 	margin-left: 8.5%;
 	margin-right:8.5%;
 
+.nav{
+    margin-top:50;
+    float: left;
 }
+
 /*#dareSign{
 	float: left;
 	margin-left: 7%;
@@ -69,3 +75,42 @@
 	font-family: 'Tahoma', Geneva, sans-serif;
 	align: center;
 }
+
+#currently {
+	align: center;
+}
+
+#thedare {
+	align: center;
+	display: inline-block;
+}
+
+ul {
+	list-style-type: none;
+    /*margin: 0;
+    padding: 0;*/
+    overflow: hidden;
+}
+
+li {
+	float: left;
+}
+
+li a {
+	display: inline-block;
+	text-align: center;
+}
+
+li a.active {
+    background-color: #4CAF50;
+    color: white;
+}
+
+li a:hover:not(.active) {
+    background-color: #555;
+    color: white;
+}
+
+
+
+

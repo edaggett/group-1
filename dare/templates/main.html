@@ -1,11 +1,12 @@
 <DOCTYPE html>
 <html>
 	<head>
-		
 		<title>Dare To Be Kind</title>
+		
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 		<script type="text/javascript" src="/static/js/main.js"></script>
 		<link rel="stylesheet" href="/static/css/main.css">
+
 	</head>
 <!-- 
 	<header>  
@@ -28,15 +29,44 @@
 		<span class="top_button">Memories&nbsp;&nbsp;</span>
 		
 	</div>
+
+
+	<!-- <header>  commentout: the header/ title bar
+		<div id='header'> 
+		<div style="margin-top: 50px; margin-left:30px">{{LogIn}}</div>
+		<div id='type'> Dare </div>  
+		</div> 
+	</header>
+
+	<nav> navigaition bar for hyperlinks 
+		<div class="nav">
+		<div class="nav">Home&nbsp;&nbsp; </div>
+		<div class="nav">My Dares&nbsp;&nbsp; </div>
+		<div class="nav">Memories&nbsp;&nbsp;</div>
+		<div class="nav">About Us&nbsp;&nbsp;</div>
+		</div>
+	</nav> -->
+
+	<body>
+		<ul>
+  			<li><a href="/main.html">Home</a></li>
+  			<li><a href="/mydare.html">My Dares</a></li>
+  			<li><a href="/memories.html">Memories</a></li>
+  			<li><a href="/about.html">About</a></li>
+		</ul>
+
+		<br>
+		<hr>
+
+
 		<form>
 		<div style="text-align:center; margin-top:167px"><button id='kind' type="button"> Click Me For a Dare! </button></div>
 		</form>
 
-
-
 		<form method="post" action="/userdare">
 		Enter a dare: <input type="text" name="daredare"></input>
 		<input type="submit" id = "user_dare" value="Submit"></input>
+
 
 		</form>
 		<hr>
