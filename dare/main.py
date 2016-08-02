@@ -93,7 +93,7 @@ class DareCompleted (webapp2.RequestHandler):
         if (self.request.get("completed_dare"))=="True":
              user=users.get_current_user()
              dare_completed_user=findUser(user)
-             dare_completed_user.points+=
+             dare_completed_user.points+=1
              dare_completed_user.put()
         self.redirect("/")
 
