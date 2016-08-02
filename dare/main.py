@@ -51,11 +51,11 @@ class MainHandler(webapp2.RequestHandler):
         user = users.get_current_user()
         
         if user:
-            greeting = ('Welcome, %s! (<a href="%s">sign out</a>)' %
+            greeting = ('text-align: right, Welcome, %s! (<a href="%s">sign out</a>)' %
             (user.nickname(), users.create_logout_url('/')))
            # data["signed_in"]=True
         else:
-            greeting = ('<a href="%s">Sign in or register</a>.' %
+            greeting = ('text-align: right, <a href="%s">Sign in or register</a>.' %
             users.create_login_url('/'))
             
             #data["signed_in"]=False
