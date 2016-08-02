@@ -49,7 +49,7 @@ class MainHandler(webapp2.RequestHandler):
 
         self.response.write(greeting)
         self.response.write(template.render(data))
-   
+
 
 
 class DareHandler(webapp2.RequestHandler):
@@ -60,7 +60,6 @@ class DareHandler(webapp2.RequestHandler):
 	   dare_results=dare_query.fetch()
 	   dare_result=dare_results[random.randint(0,len (dare_results)-1)]
 
-    
 	   dare={}
 	   dare["number"]=dare_result.dare_number
 	   dare["dare"]=dare_result.dare
