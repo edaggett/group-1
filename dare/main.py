@@ -29,7 +29,7 @@ class MainHandler(webapp2.RequestHandler):
         template=env.get_template("main.html")
        
         user = users.get_current_user()
-        data={}
+        
         if user:
             greeting = ('Welcome, %s! (<a href="%s">sign out</a>)' %
             (user.nickname(), users.create_logout_url('/')))
@@ -40,8 +40,7 @@ class MainHandler(webapp2.RequestHandler):
             
             #data["signed_in"]=False
 
-
-        self.response.write(greeting)
+        data = {"LogIn" : greeting}
         self.response.write(template.render(data))
 
 
