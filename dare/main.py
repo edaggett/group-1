@@ -20,8 +20,14 @@ import jinja2
 import random
 import logging
 from dares import Dares
+from google.appengine.ext import ndb
 
 env=jinja2.Environment(loader=jinja2.FileSystemLoader("templates"))
+
+class Dares(ndb.Model):
+    dare_number=ndb.IntegerProperty(required=False)
+    dare=ndb.StringProperty(required=True, indexed=True)
+
 
 class MainHandler(webapp2.RequestHandler):
 
@@ -44,35 +50,30 @@ class MainHandler(webapp2.RequestHandler):
         self.response.write(template.render(data))
 
 
+
 class DareHandler(webapp2.RequestHandler):
 	def get(self):
 	   template=env.get_template("dare.html")
-
+		
 	   dare_query=Dares.query()
 	   dare_results=dare_query.fetch()
 	   dare_result=dare_results[random.randint(0,len (dare_results)-1)]
 
-    
 	   dare={}
 	   dare["number"]=dare_result.dare_number
 	   dare["dare"]=dare_result.dare
 	   self.response.write(template.render(dare))
 
-# class UserDare(webapp2.RequestHandler):
-#     def get(self):
-#         logging.info("WE MADE IT TO GET ========================")
-#         user_dare = Dares(dare="new dare2")
-#         user_dare.put()
-#         # template=env.get_template('form.html')
-#         # self.response.write(template.render())
-#     def post(self):
-#         # user_dare = Dares(dare="new dare2")
-#         # user_dare.put()
-
-
-              
-
+class UserDare(webapp2.RequestHandler):
+    def post(self):
+        user_dare=self.request.get("daredare")
+        d=Dares(dare=user_dare)
+        d.put()
+        template=env.get_template("main.html")
+        self.response.write(template.render())
+        
+        
 app = webapp2.WSGIApplication([
-
-    ('/', MainHandler), ("/dare", DareHandler), #('/user', UserDare)
+('/user', UserDare),
+     ("/dare", DareHandler), ('/', MainHandler)
 ], debug=True)
