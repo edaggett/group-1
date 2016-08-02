@@ -9,11 +9,8 @@ function redirect_to_main() {
 
 
 function setup() {
-	
-    $("#kind").click(redirect_to_dare);
-
+	$("#kind").click(redirect_to_dare);
     $('#submissions').click(redirect_main);
-
 }
 
 $(document).ready(setup)

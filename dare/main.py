@@ -48,7 +48,7 @@ class MainHandler(webapp2.RequestHandler):
 class DareHandler(webapp2.RequestHandler):
 	def get(self):
 	   template=env.get_template("dare.html")
-
+		
 	   dare_query=Dares.query()
 	   dare_results=dare_query.fetch()
 	   dare_result=dare_results[random.randint(0,len (dare_results)-1)]
