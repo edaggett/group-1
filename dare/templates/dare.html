@@ -25,22 +25,24 @@
 		
 		<div id='thedare'> {{dare}} </div> 
 		<br>
+		
+		<!-- the dare is above verify below  -->
 		<form id="dareForm" method="post" action="/darecompleted">
 			Verify that you did the dare:
 			<br>
 			<input id="didDare" type="radio" name="completed_dare" value=True>Yes, I did the dare. <br>
 			<input type="radio" name="completed_dare" value=False>No, I have not done the dare. <br>	
 			<div id='submissions'><input type="submit" value="Submit"></div>
-</form>
-<br><br><br><br>
-<form method="post" action="/memories">
-Write a bit about your dare to add to your memories! 
-<br><br>
-<textarea name="textMemories" rows=10 cols=40></textarea> <input type="submit" id="submitTextMemory" value="Submit"/>
 		</form>
-<form>
+		<br><br><br><br>
+		<form method="post" action="/memories">
+			Write a bit about your dare to add to your memories! 
+			<br><br>
+			<textarea name="textMemories" rows=10 cols=40></textarea> <input type="submit" id="submitTextMemory" value="Submit"/>
+		</form>
+		<form>
 		<title>Files property test</title> 
-    <script type="text/javascript">
+    	<script type="text/javascript">
         function getFiles() {
             // Get input element
             myFileList = document.getElementById("myfiles");
@@ -50,27 +52,47 @@ Write a bit about your dare to add to your memories!
                 document.getElementById("display").innerHTML += "<br/>" + myFileList.files[i].name ;
             }
         }
-</script>
+		</script>
 
-<label>Or...Upload a picture or video to add to your memories!</label>
-<input type="submit" id="submitPicMemory" value="Submit"/>
+		<label>Or...Upload a picture or video to add to your memories!</label>
+		<input type="submit" id="submitPicMemory" value="Submit"/>
 
-<input type="file" name="picMemories" onchange="getFiles();" />
+		<input type="file" name="picMemories" onchange="getFiles();" />
 
-<div id="display"></div>
+		<div id="display"></div>
 
-</form>
-
-
-
+		</form>
 	</body>
 		<br><br><br><br><br><br><br><br><br><br><br><br>
 	<footer>
 		<div id='foot'> 
 			<hr>
-			copyright || back to top  
+			<section>
+				<ul class="actions">
+							<li><a href="/webpage" class="button">Learn More</a></li>
+				</ul>
+				<h2>Do Kind</h2>
+					<p>Oat cake fruitcake gummies gummi bears lemon drops gummies cake wafer. Bear claw powder caramels cake lemon drops dragée gummi bears. Jelly-o liquorice oat cake soufflé.Candy jelly beans toffee candy canes ice cream. Candy canes chupa chups sweet roll chupa chups dessert powder jelly-o. Danish jelly-o pastry tootsie roll cotton candy.</p>
+			</section>
+			<section>
+				<h2>Cupcake Lorem ipsum</h2>
+				<dl class="alt">
+					<dt>Address</dt>
+						<dd>1234 Somewhere Road &bull; Nashville, TN 00000 &bull; USA</dd>
+					<dt>Phone</dt>
+						<dd>(555) 123-4567 </dd>
+					<dt>Email</dt>
+							<dd><a href="#">information@untitled.tld</a></dd>
+				</dl>
+				<ul class="icons">
+					<li><a href="#" class="icon fa-twitter alt"><span class="label">Twitter</span></a></li>
+					<li><a href="#" class="icon fa-facebook alt"><span class="label">Facebook</span></a></li>
+					<li><a href="#" class="icon fa-instagram alt"><span class="label">Instagram</span></a></li>
+					<li><a href="#" class="icon fa-github alt"><span class="label">GitHub</span></a></li>
+				</ul>
+			</section>
 		</div>
-
+	</footer>
 </html>
 
 	
