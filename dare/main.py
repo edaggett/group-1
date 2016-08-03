@@ -45,6 +45,10 @@ class Dares(ndb.Model):
 
 class MainHandler(webapp2.RequestHandler):
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/master
 	def get(self):
 		template=env.get_template("main.html")
 	   
