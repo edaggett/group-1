@@ -132,11 +132,7 @@ class DareCompleted (webapp2.RequestHandler):
             dare_completed_user.put()
 
         self.redirect("/")
-<<<<<<< HEAD
-        
 
-=======
->>>>>>> origin/master
 
 
 class MemoryHandler(webapp2.RequestHandler):
@@ -147,9 +143,7 @@ class MemoryHandler(webapp2.RequestHandler):
         user = users.get_current_user()
         text_memories=self.request.get("textMemories")
         image = self.request.get("picMemories")
-        photo = Memories.pictures()
-        photo.imageblob = db.Blob(image) 
-        m=Memories(writing=text_memories, pictures=photo)
+        m=Memories(writing=text_memories, pictures=image)
         m.put()
         template=env.get_template("dare.html")
         self.response.write(template.render())
