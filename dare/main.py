@@ -28,42 +28,38 @@ from google.appengine.ext import ndb
 env=jinja2.Environment(loader=jinja2.FileSystemLoader("templates"))
 
 def findUser (user):
-	find_dare_users=DareUsers.query().filter(DareUsers.user_id==user.user_id()).get()
-	if find_dare_users==None:
-		
-		current_user=users.get_current_user()
-		find_dare_users=DareUsers(user_id=current_user.user_id())
-		find_dare_users.put()
-	return find_dare_users
+    find_dare_users=DareUsers.query().filter(DareUsers.user_id==user.user_id()).get()
+    if find_dare_users==None:
+        
+        current_user=users.get_current_user()
+        find_dare_users=DareUsers(user_id=current_user.user_id())
+        find_dare_users.put()
+    return find_dare_users
 
 
 
 class Dares(ndb.Model):
-	dare_number=ndb.IntegerProperty(required=False)
-	dare=ndb.StringProperty(required=True, indexed=True)
+    dare_number=ndb.IntegerProperty(required=False)
+    dare=ndb.StringProperty(required=True, indexed=True)
 
 
 class MainHandler(webapp2.RequestHandler):
+    def get(self):
+        template=env.get_template("main.html")
+        user = users.get_current_user()
+        
+        if user:
+            greeting = ('Welcome, %s! (<a href="%s">sign out</a>)' %
+            (user.nickname(), users.create_logout_url('/')))
+            # data["signed_in"]=True
+        else:
+            greeting = ('<a href="%s">Sign in or register</a>.' %
+            users.create_login_url('/'))
+            
+            #data["signed_in"]=False
 
-<<<<<<< Updated upstream
-	def get(self):
-		template=env.get_template("main.html")
-	   
-		user = users.get_current_user()
-		
-		if user:
-			greeting = ('Welcome, %s! (<a href="%s">sign out</a>)' %
-			(user.nickname(), users.create_logout_url('/')))
-			# data["signed_in"]=True
-		else:
-			greeting = ('<a href="%s">Sign in or register</a>.' %
-			users.create_login_url('/'))
-			
-			#data["signed_in"]=False
+        data = {"LogIn" : greeting}
 
-		data = {"LogIn" : greeting}
-		
-=======
     def get(self):
         template=env.get_template("main.html")
        
@@ -80,47 +76,66 @@ class MainHandler(webapp2.RequestHandler):
             #data["signed_in"]=False
 
         data = {"LogIn" : greeting}
-        
->>>>>>> Stashed changes
 
-		self.response.write(template.render(data))
+
+        self.response.write(template.render(data))
 
 
 
 class DareHandler(webapp2.RequestHandler):
-	def get(self):
-		template=env.get_template("dare.html")
-			
-		dare_query=Dares.query()
-		dare_results=dare_query.fetch()
-		dare_result=dare_results[random.randint(0,len (dare_results)-1)]
+    def get(self):
+        template=env.get_template("dare.html")
+            
+        dare_query=Dares.query()
+        dare_results=dare_query.fetch()
+        dare_result=dare_results[random.randint(0,len (dare_results)-1)]
 
-		dare={}
-		dare["number"]=dare_result.dare_number
-		dare["dare"]=dare_result.dare
-		self.response.write(template.render(dare))
+        dare={}
+        dare["number"]=dare_result.dare_number
+        dare["dare"]=dare_result.dare
+        self.response.write(template.render(dare))
 
 class UserDare(webapp2.RequestHandler):
-	def post(self):
-		user_dare=self.request.get("daredare")
-		d=Dares(dare=user_dare)
-		d.put()
-		template=env.get_template("main.html")
-		self.response.write(template.render())
+    def post(self):
+        user_dare=self.request.get("daredare")
+        d=Dares(dare=user_dare)
+        d.put()
+        template=env.get_template("main.html")
+        self.response.write(template.render())
 
 class DareCompleted (webapp2.RequestHandler):
-	def post (self):
-		if (self.request.get("completed_dare"))=="True":
+    def post (self):
+        if (self.request.get("completed_dare"))=="True":
 
-			user=users.get_current_user()
-			dare_completed_user=findUser(user)
-			dare_completed_user.points+=1
-			dare_completed_user.put()
+            user=users.get_current_user()
+            dare_completed_user=findUser(user)
+            dare_completed_user.points+=1
+            dare_completed_user.put()
 
-		self.redirect("/")
+        self.redirect("/")
 
+class MemoryHandler(webapp2.RequestHandler):
+    def get(self):
+        template=env.get_template("memories.html")
+        self.response.write(template.render())
 
-		
+class AboutHandler(webapp2.RequestHandler):
+    def get(self):
+        template=env.get_template("about.html")
+        self.response.write(template.render())
+
+class CurrentHandler(webapp2.RequestHandler):
+    def get(self):
+        template=env.get_template("mydare.html")
+        self.response.write(template.render())
+
+        
 app = webapp2.WSGIApplication([
-('/userdare', UserDare),
-	 ("/dare", DareHandler), ('/', MainHandler), ("/darecompleted", DareCompleted)], debug=True)
+    ('/userdare', UserDare),
+    ("/dare", DareHandler), 
+    ('/', MainHandler), 
+    ("/darecompleted", DareCompleted),
+    ("/memories", MemoryHandler),
+    ("/about", AboutHandler),
+    ("/mydare", CurrentHandler)
+], debug=True)

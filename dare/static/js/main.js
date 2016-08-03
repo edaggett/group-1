@@ -24,14 +24,9 @@ function change_color(){
 function setup() {
     $("#kind").click(redirect_to_dare);
     $('#submissions').click(redirect_to_main);
-<<<<<<< Updated upstream
 
   	$("#dareForm").submit(submit_alert);
-		
 
-=======
-  	$("#dareForm").submit(submit_alert);
->>>>>>> Stashed changes
     $("#user_dare").click(redirect_to_main);
 }
 
