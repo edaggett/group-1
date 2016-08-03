@@ -21,7 +21,6 @@
 		</header>
 	</head>
 	<body>	
-	
 		<br>
 		
 		<!-- the dare is above verify below  -->
@@ -37,34 +36,35 @@
 			<input id="didDare" type="radio" name="completed_dare" value=True>Yes, I did complete dare. <br>
 			<input type="radio" name="completed_dare" value=False>No, I have not completed the dare. <br>	
 			<div id='submissions'><input type="submit" value="Submit"></div>
+		</form>
+		<br><br><br><br>
 
-</form>
-<br><br><br><br>
+		<form method="post" action="/dare">
+			Write a bit about your dare to add to your memories! 
+			<br><br>
+			<textarea name="textMemories" rows=10 cols=40></textarea> <input type="submit" id="submitTextMemory" value="Submit"/>
+		</form>
 
-
-<form method="post" action="/dare" enctype="multipart/form-data">
-Write a bit about your dare to add to your memories! 
-<br><br>
-<div><textarea name="textMemories" rows=10 cols=40></textarea> </div> <!-- <input type="submit" id="submitTextMemory" value="Submit"/> -->
-	
-
-<label>Or...Upload a picture or video to add to your memories!</label>
-
-
-<input type="file" name="picMemories" >
-
-<div id="display"></div>
-<input type="submit" id="submitPicMemory" value="Submit"/>
-</form>
-
-		
+		<form>
+			<title>Files property test</title> 
+    		<script type="text/javascript">
+        	function getFiles() {
+            	// Get input element
+            	myFileList = document.getElementById("myfiles");
+            	// loop through files property, using length to get number of files chosen
+            	for (var i = 0; i < myFileList.files.length; i++) {
+                	// display them in the div
+                	document.getElementById("display").innerHTML += "<br/>" + myFileList.files[i].name ;
+           		}
+        	}
+			</script>
+			<label>Or...Upload a picture or video to add to your memories!</label>
+			<input type="submit" id="submitPicMemory" value="Submit"/>
+			<input type="file" name="picMemories" onchange="getFiles();" />
+			<div id="display"></div>
+		</form>
 	</body>
 		<br><br><br><br><br><br><br><br><br><br><br><br>
-
-
-
-
-
 	<footer>
 		<div id='foot'> 
 			<hr>
