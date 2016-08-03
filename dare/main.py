@@ -45,7 +45,6 @@ class Dares(ndb.Model):
 
 class MainHandler(webapp2.RequestHandler):
 
-<<<<<<< HEAD
 	def get(self):
 		template=env.get_template("main.html")
 	   
@@ -63,25 +62,6 @@ class MainHandler(webapp2.RequestHandler):
 
 		data = {"LogIn" : greeting}
 		
-=======
-    def get(self):
-        template=env.get_template("main.html")
-       
-        user = users.get_current_user()
-        
-        if user:
-            greeting = ('text-align: right, Welcome, %s! (<a href="%s">sign out</a>)' %
-            (user.nickname(), users.create_logout_url('/')))
-           # data["signed_in"]=True
-        else:
-            greeting = ('text-align: right, <a href="%s">Sign in or register</a>.' %
-            users.create_login_url('/'))
-            
-            #data["signed_in"]=False
-
-        data = {"LogIn" : greeting}
-        
->>>>>>> origin/master
 
 		self.response.write(template.render(data))
 
@@ -116,7 +96,7 @@ class DareCompleted (webapp2.RequestHandler):
 			dare_completed_user=findUser(user)
 			dare_completed_user.points+=1
 			dare_completed_user.put()
-
+			
 		self.redirect("/")
 
 
