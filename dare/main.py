@@ -79,23 +79,23 @@ class MainHandler(webapp2.RequestHandler):
         data = {"LogIn" : greeting}
 
 
-	def get(self):
-		template=env.get_template("main.html")
-	   
-		user = users.get_current_user()
-		
-		if user:
-			greeting = ('Welcome, %s! (<a href="%s">sign out</a>)' %
-			(user.nickname(), users.create_logout_url('/')))
-			# data["signed_in"]=True
-		else:
-			greeting = ('<a href="%s">Sign in or register</a>.' %
-			users.create_login_url('/'))
-			
-			#data["signed_in"]=False
+    def get(self):
+        template=env.get_template("main.html")
+       
+        user = users.get_current_user()
+        
+        if user:
+            greeting = ('Welcome, %s! (<a href="%s">sign out</a>)' %
+            (user.nickname(), users.create_logout_url('/')))
+            # data["signed_in"]=True
+        else:
+            greeting = ('<a href="%s">Sign in or register</a>.' %
+            users.create_login_url('/'))
+            
+            #data["signed_in"]=False
 
-		data = {"LogIn" : greeting}
-	
+        data = {"LogIn" : greeting}
+    
 
 
         self.response.write(template.render(data))
@@ -132,13 +132,6 @@ class DareCompleted (webapp2.RequestHandler):
             dare_completed_user.put()
 
         self.redirect("/")
-        
-			user=users.get_current_user()
-			dare_completed_user=findUser(user)
-			dare_completed_user.points+=1
-			dare_completed_user.put()
-			
-		self.redirect("/")
 
 
 class MemoryHandler(webapp2.RequestHandler):
