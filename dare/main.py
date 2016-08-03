@@ -59,69 +59,8 @@ class MainHandler(webapp2.RequestHandler):
             #data["signed_in"]=False
 
         data = {"LogIn" : greeting}
-
-
-    def get(self):
-        template=env.get_template("main.html")
-       
-        user = users.get_current_user()
         
-        if user:
-            greeting = ('Welcome, %s! (<a href="%s">sign out</a>)' %
-            (user.nickname(), users.create_logout_url('/')))
-           # data["signed_in"]=True
-        else:
-            greeting = ('<a href="%s">Sign in or register</a>.' %
-            users.create_login_url('/'))
-            
-            #data["signed_in"]=False
-
-        data = {"LogIn" : greeting}
-
-
-    def get(self):
-        template=env.get_template("main.html")
-       
-        user = users.get_current_user()
-        
-        if user:
-            greeting = ('Welcome, %s! (<a href="%s">sign out</a>)' %
-            (user.nickname(), users.create_logout_url('/')))
-            # data["signed_in"]=True
-        else:
-            greeting = ('<a href="%s">Sign in or register</a>.' %
-            users.create_login_url('/'))
-            
-            #data["signed_in"]=False
-
-        data = {"LogIn" : greeting}
-
         self.response.write(template.render(data))
-<<<<<<< Updated upstream
-=======
-
-
-    def get(self):
-        template=env.get_template("main.html")
-       
-        user = users.get_current_user()
-        
-        if user:
-            greeting = ('Welcome, %s! (<a href="%s">sign out</a>)' %
-            (user.nickname(), users.create_logout_url('/')))
-            # data["signed_in"]=True
-        else:
-            greeting = ('<a href="%s">Sign in or register</a>.' %
-            users.create_login_url('/'))
-            
-            #data["signed_in"]=False
-
-        data = {"LogIn" : greeting}
-        
-
-        self.response.write(template.render(data))
->>>>>>> Stashed changes
-
 
 class DareHandler(webapp2.RequestHandler):
     def get(self):
@@ -136,10 +75,6 @@ class DareHandler(webapp2.RequestHandler):
         dare["dare"]=dare_result.dare
         self.response.write(template.render(dare))
 
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
     def post(self):
         user = users.get_current_user()
         text_memories=self.request.get("textMemories")
@@ -148,7 +83,15 @@ class DareHandler(webapp2.RequestHandler):
         m.put()
         template=env.get_template("dare.html")
         self.response.write(template.render())
+        results_template = env.get_template('results.html')
 
+        base_url = "http://api.giphy.com/v1/gifs/search?"
+        url_params = {
+            'q': self.request.get('query'), 
+            'api_key': 'dc6zaTOxFJmzC', 
+            'limit': 10}
+        resource = base_url + urllib.urlencode(url_params)
+        
 class UserDare(webapp2.RequestHandler):
     def post(self):
         user_dare=self.request.get("daredare")
@@ -164,7 +107,6 @@ class DareCompleted (webapp2.RequestHandler):
             dare_completed_user=findUser(user)
             dare_completed_user.points+=1
             dare_completed_user.put()
-
         self.redirect("/")
 
 class AboutHandler(webapp2.RequestHandler):
@@ -177,52 +119,26 @@ class CurrentHandler(webapp2.RequestHandler):
         template=env.get_template("mydare.html")
         self.response.write(template.render())
 
-
-# class MemoryHandler(webapp2.RequestHandler):
-    # def get(self):
-    #     template=env.get_template("dare.html")
-    #     self.response.write(template.render())
-    # def post(self):
-    #     user = users.get_current_user()
-    #     text_memories=self.request.get("textMemories")
-    #     image = self.request.get("picMemories")
-    #     photo = Memories.pictures()
-    #     photo.imageblob = db.Blob(image) 
-    #     m=Memories(writing=text_memories, pictures=photo)
-    #     m.put()
-    #     template=env.get_template("dare.html")
-    #     self.response.write(template.render())
-
-<<<<<<< Updated upstream
-=======
-    def get(self):
-        memories_query = DareUsers.query().filter(DareUsers.writing)
-        _ = memories_query.fetch()
->>>>>>> Stashed changes
-        
-        # template=env.get_template("memories.html")
-
-        # self.response.write(template.render())
-
-
-
+class MemoryHandler(webapp2.RequestHandler):
     def get(self):
         template=env.get_template("memories.html")
         self.response.write(template.render())
+        memories_query = Memories.query().filter(Memories.writing)
+        user_memory = memories_query.fetch()
+        data = {}
+
     def post(self): 
         results_template = env.get_template('memories.html')
-        memoire = {'noun1': self.request.get('mem'),
-        # 'activity': self.request.get('pic')}
+        # memoire = {'noun1': self.request.get('mem'),
+        # # 'activity': self.request.get('pic')}
         self.response.out.write(results_template.render())
 
-
-        
 app = webapp2.WSGIApplication([
-    ('/userdare', UserDare),
+    ("/userdare", UserDare),
     ("/dare", DareHandler), 
-    ('/', MainHandler), 
+    ("/", MainHandler), 
     ("/darecompleted", DareCompleted),
-    # ("/memories", MemoryHandler),
+    ("/memories", MemoryHandler),
     ("/about", AboutHandler),
     ("/mydare", CurrentHandler)
 ], debug=True)
