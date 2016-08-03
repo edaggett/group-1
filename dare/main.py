@@ -133,17 +133,22 @@ class DareCompleted (webapp2.RequestHandler):
 
         self.redirect("/")
         
-			user=users.get_current_user()
-			dare_completed_user=findUser(user)
-			dare_completed_user.points+=1
-			dare_completed_user.put()
-			
-		self.redirect("/")
+
 
 
 class MemoryHandler(webapp2.RequestHandler):
     def get(self):
-        template=env.get_template("memories.html")
+        template=env.get_template("dare.html")
+        self.response.write(template.render())
+    def post(self):
+        user = users.get_current_user()
+        text_memories=self.request.get("textMemories")
+        image = self.request.get("picMemories")
+        photo = Memories.pictures()
+        photo.imageblob = db.Blob(image) 
+        m=Memories(writing=text_memories, pictures=photo)
+        m.put()
+        template=env.get_template("dare.html")
         self.response.write(template.render())
 
 class AboutHandler(webapp2.RequestHandler):
