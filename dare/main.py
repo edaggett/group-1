@@ -44,7 +44,6 @@ class Dares(ndb.Model):
 
 
 class MainHandler(webapp2.RequestHandler):
-<<<<<<< Updated upstream
     def get(self):
         template=env.get_template("main.html")
         user = users.get_current_user()
@@ -113,9 +112,6 @@ class DareHandler(webapp2.RequestHandler):
         dare["dare"]=dare_result.dare
         self.response.write(template.render(dare))
 
-    def get(self):
-        template=env.get_template("dare.html")
-        self.response.write(template.render())
 
     def post(self):
         user = users.get_current_user()
@@ -146,7 +142,7 @@ class DareCompleted (webapp2.RequestHandler):
 
 
 
-class MemoryHandler(webapp2.RequestHandler):
+# class MemoryHandler(webapp2.RequestHandler):
     # def get(self):
     #     template=env.get_template("dare.html")
     #     self.response.write(template.render())
@@ -162,9 +158,9 @@ class MemoryHandler(webapp2.RequestHandler):
     #     self.response.write(template.render())
 
         
-        template=env.get_template("memories.html")
+        # template=env.get_template("memories.html")
 
-        self.response.write(template.render())
+        # self.response.write(template.render())
 
 
 class AboutHandler(webapp2.RequestHandler):
@@ -183,7 +179,7 @@ app = webapp2.WSGIApplication([
     ("/dare", DareHandler), 
     ('/', MainHandler), 
     ("/darecompleted", DareCompleted),
-    ("/memories", MemoryHandler),
+    # ("/memories", MemoryHandler),
     ("/about", AboutHandler),
     ("/mydare", CurrentHandler)
 ], debug=True)
