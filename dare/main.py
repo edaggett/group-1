@@ -13,8 +13,10 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
+import cgi
+import urllib
 from google.appengine.api import users
+from google.appengine.api import images
 import webapp2
 import jinja2
 import random
@@ -59,8 +61,51 @@ class MainHandler(webapp2.RequestHandler):
             #data["signed_in"]=False
 
         data = {"LogIn" : greeting}
+<<<<<<< HEAD
         
         self.response.write(template.render(data))
+=======
+
+
+    def get(self):
+        template=env.get_template("main.html")
+       
+        user = users.get_current_user()
+        
+        if user:
+            greeting = ('Welcome, %s! (<a href="%s">sign out</a>)' %
+            (user.nickname(), users.create_logout_url('/')))
+           # data["signed_in"]=True
+        else:
+            greeting = ('<a href="%s">Sign in or register</a>.' %
+            users.create_login_url('/'))
+            
+            #data["signed_in"]=False
+
+        data = {"LogIn" : greeting}
+
+
+    def get(self):
+        template=env.get_template("main.html")
+       
+        user = users.get_current_user()
+        
+        if user:
+            greeting = ('Welcome, %s! (<a href="%s">sign out</a>)' %
+            (user.nickname(), users.create_logout_url('/')))
+            # data["signed_in"]=True
+        else:
+            greeting = ('<a href="%s">Sign in or register</a>.' %
+            users.create_login_url('/'))
+            
+            #data["signed_in"]=False
+
+        data = {"LogIn" : greeting}
+
+        self.response.write(template.render(data))
+
+
+>>>>>>> origin/master
 
 class DareHandler(webapp2.RequestHandler):
     def get(self):
@@ -75,14 +120,19 @@ class DareHandler(webapp2.RequestHandler):
         dare["dare"]=dare_result.dare
         self.response.write(template.render(dare))
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/master
     def post(self):
         user = users.get_current_user()
-        text_memories=self.request.get("textMemories")
-        pic_memories = self.request.get("picMemories") 
-        m=Memories(writing=text_memories, pictures=pic_memories)
+        m=Memories(writing=self.request.get("textMemories"), pictures=self.request.get("picMemories"))
         m.put()
         template=env.get_template("dare.html")
+        #self.response.out.write('<div><img src="/img?img_id=%s"></img>' %Memories.key.urlsafe())
+        #self.response.out.write('<blockquote>%s</blockquote></div>' %cgi.escape(Memories.writing))
         self.response.write(template.render())
+<<<<<<< HEAD
         results_template = env.get_template('results.html')
 
         base_url = "http://api.giphy.com/v1/gifs/search?"
@@ -92,6 +142,23 @@ class DareHandler(webapp2.RequestHandler):
             'limit': 10}
         resource = base_url + urllib.urlencode(url_params)
         
+=======
+
+class ImageHandler(webapp2.RequestHandler):
+    def get(self):
+        memory_id = self.request.get("mid")
+        m=Memories.get_by_id()
+        self.response.headers['Content-Type'] = 'image/jpg'
+        self.response.write(m.pictures)
+        #Memories_key = ndb.Key(urlsafe=self.request.get('picMemories_id'))
+        #Memories = Memories_key.get()
+        #if Memories.pictures:
+        #    self.response.headers['Content-Type'] = 'image/jpg'
+        #    self.response.out.write(Memories.pictures)
+        #else:
+        #    self.response.out.write('No image')
+
+>>>>>>> origin/master
 class UserDare(webapp2.RequestHandler):
     def post(self):
         user_dare=self.request.get("daredare")
@@ -119,6 +186,7 @@ class CurrentHandler(webapp2.RequestHandler):
         template=env.get_template("mydare.html")
         self.response.write(template.render())
 
+<<<<<<< HEAD
 class MemoryHandler(webapp2.RequestHandler):
     def get(self):
         template=env.get_template("memories.html")
@@ -132,13 +200,55 @@ class MemoryHandler(webapp2.RequestHandler):
         # memoire = {'noun1': self.request.get('mem'),
         # # 'activity': self.request.get('pic')}
         self.response.out.write(results_template.render())
+=======
+
+# class MemoryHandler(webapp2.RequestHandler):
+    # def get(self):
+    #     template=env.get_template("dare.html")
+    #     self.response.write(template.render())
+    # def post(self):
+    #     user = users.get_current_user()
+    #     text_memories=self.request.get("textMemories")
+    #     image = self.request.get("picMemories")
+    #     photo = Memories.pictures()
+    #     photo.imageblob = db.Blob(image) 
+    #     m=Memories(writing=text_memories, pictures=photo)
+    #     m.put()
+    #     template=env.get_template("dare.html")
+    #     self.response.write(template.render())
+
+
+    # def get(self):
+    #     memories_query = DareUsers.query().filter(DareUsers.writing)
+    #     _ = memories_query.fetch()
+        
+    #     # template=env.get_template("memories.html")
+
+    #     # self.response.write(template.render())
+
+
+
+    # def get(self):
+    #     template=env.get_template("memories.html")
+    #     self.response.write(template.render())
+    # def post(self): 
+    #     results_template = env.get_template('memories.html')
+    #     memoire = {'noun1': self.request.get('mem'),
+    #     # 'activity': self.request.get('pic')}
+    #     self.response.out.write(results_template.render())
+>>>>>>> origin/master
 
 app = webapp2.WSGIApplication([
     ("/userdare", UserDare),
     ("/dare", DareHandler), 
     ("/", MainHandler), 
     ("/darecompleted", DareCompleted),
+<<<<<<< HEAD
     ("/memories", MemoryHandler),
+=======
+    #("/memories", MemoryHandler),
+>>>>>>> origin/master
     ("/about", AboutHandler),
-    ("/mydare", CurrentHandler)
+    ("/mydare", CurrentHandler),
+    ("/image", ImageHandler)
 ], debug=True)
