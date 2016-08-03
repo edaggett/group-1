@@ -5,6 +5,7 @@
 		
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 		<script type="text/javascript" src="/static/js/main.js"></script>
+<<<<<<< Updated upstream
 		<link rel="stylesheet" href="/static/css/main.css">
 
 		<header>
@@ -26,10 +27,18 @@
 		<div id='thedare'> {{dare}} </div> 
 		<br>
 		<form id="dareForm" method="post" action="/darecompleted">
+=======
+		<link rel="stylesheet" href="/static/css/dare.css">
+		<div id='thedare'> {{dare}} </div>
+		<br>
+	</head>
+	<body>
+		<form id=dareForm method="post" action="/darecompleted">
+>>>>>>> Stashed changes
 			Verify that you did the dare:
 			<br>
-			<input id="didDare" type="radio" name="completed_dare" value=True>Yes, I did the dare. <br>
-			<input type="radio" name="completed_dare" value=False>No, I have not done the dare. <br>	
+			<input id="didDare" type="radio" name="completed_dare" value=True>Yes, I did complete dare. <br>
+			<input type="radio" name="completed_dare" value=False>No, I have not completed the dare. <br>	
 			<div id='submissions'><input type="submit" value="Submit"></div>
 </form>
 <br><br><br><br>
