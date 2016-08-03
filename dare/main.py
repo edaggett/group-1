@@ -44,6 +44,7 @@ class Dares(ndb.Model):
 
 
 class MainHandler(webapp2.RequestHandler):
+<<<<<<< Updated upstream
     def get(self):
         template=env.get_template("main.html")
         user = users.get_current_user()
@@ -95,11 +96,8 @@ class MainHandler(webapp2.RequestHandler):
             #data["signed_in"]=False
 
         data = {"LogIn" : greeting}
-    
-
 
         self.response.write(template.render(data))
-
 
 
 class DareHandler(webapp2.RequestHandler):
@@ -114,6 +112,19 @@ class DareHandler(webapp2.RequestHandler):
         dare["number"]=dare_result.dare_number
         dare["dare"]=dare_result.dare
         self.response.write(template.render(dare))
+
+    def get(self):
+        template=env.get_template("dare.html")
+        self.response.write(template.render())
+
+    def post(self):
+        user = users.get_current_user()
+        text_memories=self.request.get("textMemories")
+        pic_memories = self.request.get("picMemories") 
+        m=Memories(writing=text_memories, pictures=pic_memories)
+        m.put()
+        template=env.get_template("dare.html")
+        self.response.write(template.render())
 
 class UserDare(webapp2.RequestHandler):
     def post(self):
@@ -136,17 +147,25 @@ class DareCompleted (webapp2.RequestHandler):
 
 
 class MemoryHandler(webapp2.RequestHandler):
-    def get(self):
-        template=env.get_template("dare.html")
+    # def get(self):
+    #     template=env.get_template("dare.html")
+    #     self.response.write(template.render())
+    # def post(self):
+    #     user = users.get_current_user()
+    #     text_memories=self.request.get("textMemories")
+    #     image = self.request.get("picMemories")
+    #     photo = Memories.pictures()
+    #     photo.imageblob = db.Blob(image) 
+    #     m=Memories(writing=text_memories, pictures=photo)
+    #     m.put()
+    #     template=env.get_template("dare.html")
+    #     self.response.write(template.render())
+
+        
+        template=env.get_template("memories.html")
+
         self.response.write(template.render())
-    def post(self):
-        user = users.get_current_user()
-        text_memories=self.request.get("textMemories")
-        image = self.request.get("picMemories")
-        m=Memories(writing=text_memories, pictures=image)
-        m.put()
-        template=env.get_template("dare.html")
-        self.response.write(template.render())
+
 
 class AboutHandler(webapp2.RequestHandler):
     def get(self):
