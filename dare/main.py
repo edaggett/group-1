@@ -97,6 +97,30 @@ class MainHandler(webapp2.RequestHandler):
         data = {"LogIn" : greeting}
 
         self.response.write(template.render(data))
+<<<<<<< Updated upstream
+=======
+
+
+    def get(self):
+        template=env.get_template("main.html")
+       
+        user = users.get_current_user()
+        
+        if user:
+            greeting = ('Welcome, %s! (<a href="%s">sign out</a>)' %
+            (user.nickname(), users.create_logout_url('/')))
+            # data["signed_in"]=True
+        else:
+            greeting = ('<a href="%s">Sign in or register</a>.' %
+            users.create_login_url('/'))
+            
+            #data["signed_in"]=False
+
+        data = {"LogIn" : greeting}
+        
+
+        self.response.write(template.render(data))
+>>>>>>> Stashed changes
 
 
 class DareHandler(webapp2.RequestHandler):
@@ -112,7 +136,10 @@ class DareHandler(webapp2.RequestHandler):
         dare["dare"]=dare_result.dare
         self.response.write(template.render(dare))
 
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
     def post(self):
         user = users.get_current_user()
         text_memories=self.request.get("textMemories")
@@ -140,6 +167,15 @@ class DareCompleted (webapp2.RequestHandler):
 
         self.redirect("/")
 
+class AboutHandler(webapp2.RequestHandler):
+    def get(self):
+        template=env.get_template("about.html")
+        self.response.write(template.render())
+
+class CurrentHandler(webapp2.RequestHandler):
+    def get(self):
+        template=env.get_template("mydare.html")
+        self.response.write(template.render())
 
 
 # class MemoryHandler(webapp2.RequestHandler):
@@ -157,21 +193,28 @@ class DareCompleted (webapp2.RequestHandler):
     #     template=env.get_template("dare.html")
     #     self.response.write(template.render())
 
+<<<<<<< Updated upstream
+=======
+    def get(self):
+        memories_query = DareUsers.query().filter(DareUsers.writing)
+        _ = memories_query.fetch()
+>>>>>>> Stashed changes
         
         # template=env.get_template("memories.html")
 
         # self.response.write(template.render())
 
 
-class AboutHandler(webapp2.RequestHandler):
-    def get(self):
-        template=env.get_template("about.html")
-        self.response.write(template.render())
 
-class CurrentHandler(webapp2.RequestHandler):
     def get(self):
-        template=env.get_template("mydare.html")
+        template=env.get_template("memories.html")
         self.response.write(template.render())
+    def post(self): 
+        results_template = env.get_template('memories.html')
+        memoire = {'noun1': self.request.get('mem'),
+        # 'activity': self.request.get('pic')}
+        self.response.out.write(results_template.render())
+
 
         
 app = webapp2.WSGIApplication([
