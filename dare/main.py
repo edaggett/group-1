@@ -126,13 +126,20 @@ class UserDare(webapp2.RequestHandler):
 class DareCompleted (webapp2.RequestHandler):
     def post (self):
         if (self.request.get("completed_dare"))=="True":
-
             user=users.get_current_user()
             dare_completed_user=findUser(user)
             dare_completed_user.points+=1
             dare_completed_user.put()
 
         self.redirect("/")
+        
+			user=users.get_current_user()
+			dare_completed_user=findUser(user)
+			dare_completed_user.points+=1
+			dare_completed_user.put()
+			
+		self.redirect("/")
+
 
 class MemoryHandler(webapp2.RequestHandler):
     def get(self):
