@@ -22,7 +22,10 @@
 	<body>	
 		<br>
 		<h1 id='title'> Memories </h1>
-		<h2> {{mem}} </h2>
+		{% for memory in memories %}
+  			{{memory.writing}}  
+  			<img src="/image?mid={{ memory.key.id() }}">                          
+			{% endfor %}
 	</body>
 		<br><br><br><br><br><br><br><br><br><br><br><br>
 	<footer>
@@ -35,6 +38,7 @@
 				<h2>Do Kind</h2>
 					<p>Oat cake fruitcake gummies gummi bears lemon drops gummies cake wafer. Bear claw powder caramels cake lemon drops dragée gummi bears. Jelly-o liquorice oat cake soufflé.Candy jelly beans toffee candy canes ice cream. Candy canes chupa chups sweet roll chupa chups dessert powder jelly-o. Danish jelly-o pastry tootsie roll cotton candy.</p>
 			</section>
+		
 			<section>
 				<h2>Cupcake Lorem ipsum</h2>
 				<dl class="alt">

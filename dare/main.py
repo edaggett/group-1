@@ -30,11 +30,12 @@ from google.appengine.ext import ndb
 env=jinja2.Environment(loader=jinja2.FileSystemLoader("templates"))
 
 def findUser (user):
-    find_dare_users=DareUsers.query().filter(DareUsers.user_id==user.user_id()).get()
+    user = users.get_current_user()
+    find_dare_users=DareUsers.query().filter(DareUsers.email==user.email()).get()
     if find_dare_users==None:
         
         current_user=users.get_current_user()
-        find_dare_users=DareUsers(user_id=current_user.user_id())
+        find_dare_users=DareUsers(email=current_user.email())
         find_dare_users.put()
     return find_dare_users
 
@@ -61,51 +62,9 @@ class MainHandler(webapp2.RequestHandler):
             #data["signed_in"]=False
 
         data = {"LogIn" : greeting}
-<<<<<<< HEAD
         
         self.response.write(template.render(data))
-=======
 
-
-    def get(self):
-        template=env.get_template("main.html")
-       
-        user = users.get_current_user()
-        
-        if user:
-            greeting = ('Welcome, %s! (<a href="%s">sign out</a>)' %
-            (user.nickname(), users.create_logout_url('/')))
-           # data["signed_in"]=True
-        else:
-            greeting = ('<a href="%s">Sign in or register</a>.' %
-            users.create_login_url('/'))
-            
-            #data["signed_in"]=False
-
-        data = {"LogIn" : greeting}
-
-
-    def get(self):
-        template=env.get_template("main.html")
-       
-        user = users.get_current_user()
-        
-        if user:
-            greeting = ('Welcome, %s! (<a href="%s">sign out</a>)' %
-            (user.nickname(), users.create_logout_url('/')))
-            # data["signed_in"]=True
-        else:
-            greeting = ('<a href="%s">Sign in or register</a>.' %
-            users.create_login_url('/'))
-            
-            #data["signed_in"]=False
-
-        data = {"LogIn" : greeting}
-
-        self.response.write(template.render(data))
-
-
->>>>>>> origin/master
 
 class DareHandler(webapp2.RequestHandler):
     def get(self):
@@ -113,52 +72,59 @@ class DareHandler(webapp2.RequestHandler):
             
         dare_query=Dares.query()
         dare_results=dare_query.fetch()
-        dare_result=dare_results[random.randint(0,len (dare_results)-1)]
+        dare_result=dare_results[random.randint(0,len(dare_results) - 1)]
+
+        print len(dare_results)
 
         dare={}
         dare["number"]=dare_result.dare_number
         dare["dare"]=dare_result.dare
         self.response.write(template.render(dare))
 
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/master
     def post(self):
         user = users.get_current_user()
-        m=Memories(writing=self.request.get("textMemories"), pictures=self.request.get("picMemories"))
+        # d=DareUsers(email=user.email())
+        # d_key=d.put()
+        m=Memories(writing=self.request.get("textMemories"), pictures=self.request.get("picMemories"), owner=user.email())
         m.put()
         template=env.get_template("dare.html")
         #self.response.out.write('<div><img src="/img?img_id=%s"></img>' %Memories.key.urlsafe())
         #self.response.out.write('<blockquote>%s</blockquote></div>' %cgi.escape(Memories.writing))
         self.response.write(template.render())
-<<<<<<< HEAD
-        results_template = env.get_template('results.html')
+        # results_template = env.get_template('results.html')
 
-        base_url = "http://api.giphy.com/v1/gifs/search?"
-        url_params = {
-            'q': self.request.get('query'), 
-            'api_key': 'dc6zaTOxFJmzC', 
-            'limit': 10}
-        resource = base_url + urllib.urlencode(url_params)
         
-=======
+
 
 class ImageHandler(webapp2.RequestHandler):
     def get(self):
-        memory_id = self.request.get("mid")
-        m=Memories.get_by_id()
+        # template=env.get_template("memories.html")
+        # user = users.get_current_user()
+        # picture_vars={"pictures":self.request.get("memory_id")}
+        # d=DareUsers
+        # d_key=d.put()
+        # m=Memories(writing=self.request.get("textMemories"), pictures=self.request.get("picMemories"), owner=user.email())
+        # logging.info(m)
+        # key=m.put()
+        # logging.info(key)
+        # m=Memories.query().filter(Memories.owner==user.email())
+        # find_memories=m.fetch()
+        # pics=Memories.key.id().pictures
+        
+        # template=env.get_template("memories.html")
+        # memories_query=Memories.query()
+        # memories_results=memories_query.fetch()
+        # pics=[memories_results[i]] for i in range (0, len(memories_results)-1)
+        memory_id=self.request.get("mid")
+        m=Memories.get_by_id(int(memory_id))
         self.response.headers['Content-Type'] = 'image/jpg'
         self.response.write(m.pictures)
-        #Memories_key = ndb.Key(urlsafe=self.request.get('picMemories_id'))
-        #Memories = Memories_key.get()
-        #if Memories.pictures:
-        #    self.response.headers['Content-Type'] = 'image/jpg'
-        #    self.response.out.write(Memories.pictures)
-        #else:
-        #    self.response.out.write('No image')
+    
+        # self.response.out.write(find_memories[i].pictures)
 
->>>>>>> origin/master
+
+        
+
 class UserDare(webapp2.RequestHandler):
     def post(self):
         user_dare=self.request.get("daredare")
@@ -186,68 +152,25 @@ class CurrentHandler(webapp2.RequestHandler):
         template=env.get_template("mydare.html")
         self.response.write(template.render())
 
-<<<<<<< HEAD
+
 class MemoryHandler(webapp2.RequestHandler):
     def get(self):
+        user=users.get_current_user()
         template=env.get_template("memories.html")
-        self.response.write(template.render())
-        memories_query = Memories.query().filter(Memories.writing)
-        user_memory = memories_query.fetch()
-        data = {}
-
-    def post(self): 
-        results_template = env.get_template('memories.html')
-        # memoire = {'noun1': self.request.get('mem'),
-        # # 'activity': self.request.get('pic')}
-        self.response.out.write(results_template.render())
-=======
-
-# class MemoryHandler(webapp2.RequestHandler):
-    # def get(self):
-    #     template=env.get_template("dare.html")
-    #     self.response.write(template.render())
-    # def post(self):
-    #     user = users.get_current_user()
-    #     text_memories=self.request.get("textMemories")
-    #     image = self.request.get("picMemories")
-    #     photo = Memories.pictures()
-    #     photo.imageblob = db.Blob(image) 
-    #     m=Memories(writing=text_memories, pictures=photo)
-    #     m.put()
-    #     template=env.get_template("dare.html")
-    #     self.response.write(template.render())
-
-
-    # def get(self):
-    #     memories_query = DareUsers.query().filter(DareUsers.writing)
-    #     _ = memories_query.fetch()
+        memories_query = Memories.query()
+        memories=memories_query.filter(Memories.owner==user.email()).fetch()
+        data = {"memories" : memories}
+        self.response.write(template.render(data))
         
-    #     # template=env.get_template("memories.html")
-
-    #     # self.response.write(template.render())
 
 
-
-    # def get(self):
-    #     template=env.get_template("memories.html")
-    #     self.response.write(template.render())
-    # def post(self): 
-    #     results_template = env.get_template('memories.html')
-    #     memoire = {'noun1': self.request.get('mem'),
-    #     # 'activity': self.request.get('pic')}
-    #     self.response.out.write(results_template.render())
->>>>>>> origin/master
-
+    
 app = webapp2.WSGIApplication([
     ("/userdare", UserDare),
     ("/dare", DareHandler), 
     ("/", MainHandler), 
     ("/darecompleted", DareCompleted),
-<<<<<<< HEAD
     ("/memories", MemoryHandler),
-=======
-    #("/memories", MemoryHandler),
->>>>>>> origin/master
     ("/about", AboutHandler),
     ("/mydare", CurrentHandler),
     ("/image", ImageHandler)
