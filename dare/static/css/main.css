@@ -116,13 +116,16 @@ li a:hover:not(.active) {
 */
 /*- - - - - - - - - - - mydare.html - - - - - - - - - - - -*/
 
-#currently {
+/*#currently {
 	align: center;
-}
+	background-color: #fff
+}*/
 
 
 #currently {
 	text-align: center;
+	background-color: #fff
+	
 }
 
 #createmem {
@@ -271,7 +274,7 @@ p a {
   color: #eee;
   font-size: 34px;
   font-family: 'Open Sans';
-  margin-top: 2000px;
+  margin-top: 200px;
 }
 
 .wrap {
@@ -332,6 +335,7 @@ body {
 nav {
   font-family: 'Open Sans Condensed', sans-serif;
   margin:0px;
+  margin-top: 0px;
   padding:0px;
   width:100%;
   text-align:center;
