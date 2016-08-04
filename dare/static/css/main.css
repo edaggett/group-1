@@ -16,8 +16,13 @@ h2 {
 
 #thedare {
 	font-size: 90px;
+  color: #ff6666;
 }
 
+#current {
+  font-size: 40px;
+
+}
 p {
   color: #FFFCE2;
 }

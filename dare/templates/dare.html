@@ -256,6 +256,18 @@ Write about your dare to add to your memories!
         <div class="o">A</div>
         <div class="a">R</div>
         <div class="d">E</div>
+        <div class="l"> &nbsp</div>
+        <div class="o">T</div>
+        <div class="a">O</div>
+        <div class="d"> &nbsp</div>
+        <div class="l">B</div>
+        <div class="o">E</div>
+        <div class="a">&nbsp</div>
+        <div class="d">K</div>
+        <div class="l">I</div>
+        <div class="o">N</div>
+        <div class="a">D</div>
+       
     <!-- </div>  -->
   </div> <br/><br></h2>
     <!-- <p><a href="https://twitter.com/webnationlive" target="_blank">Follow us @webnationlive to stay connected</a></p> -->
@@ -265,33 +277,20 @@ Write about your dare to add to your memories!
   <br><br><br><br><br><br>
  
   <!-- the dare is above verify below  -->
-	 <form id="dareForm" method="post" action="/darecompleted">
-	 	<div id='current'>Your dare:<br><div>
+	 	<div id='current'>Your dare:<br></div>
 		<div id='thedare'> {{dare}} </div>
-	</form>
-		<br><br><br><br><br><br><br><br>
-
-
-  <div id="currently">
-		<!-- <form id="dareForm" method="post" action="/darecompleted">
-		<br><br>
-			Have you completed your dare {{dare}}:
-			<br>
-			<input id="didDare" type="radio" name="completed_dare" value=True>Yes, I did the dare. <br>
-			<input type="radio" name="completed_dare" value=False>No, I have not done the dare. <br>	
-			<div id='submissions'><input type="submit" value="Submit"></div>
-		</form> -->
-		</div>
+	
+		<br><br><br><br>
 
 		<br><br><br><br>
-		<div id="createmem">
+		<div id="createmem"> If you have completed your dare, create a memory! It's simple: either write about your experience doing your dare, add a picture, or do both!<br><br>
 		<form method="post" action="/dare" enctype="multipart/form-data">
 			Write a bit about your dare to add to your memories! 
 			<br><br>
 			
 			<textarea name="textMemories" rows=10 cols=40></textarea> 
 			<br>
-			<label>Or...Upload a picture or video to add to your memories!</label>
+			<label>Or...Upload a picture to add to your memories!</label>
 			<input type="file" name="picMemories"/>
 			<input type="submit" id="submitPicMemory" value="Submit"/>
 			<div id="display"></div>

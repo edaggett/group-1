@@ -2,7 +2,6 @@ function redirect_to_dare() {
 	window.location.replace("/dare");
 }
 
-
 function redirect_to_main() {
 	window.location.replace("/");
 }
@@ -32,6 +31,7 @@ function change_color4(){
 	$(".top_button").css ("background-color", "#61a20c")
 }
 function setup() {
+
     $("#kind").click(redirect_to_dare);
     $('#submissions').click(redirect_to_main);
   	$("#dareForm").submit(submit_alert);
