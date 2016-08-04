@@ -1,17 +1,35 @@
-/*/*- - - - - - - - - - - - main.html - - - - - - - - - - - - */
+body {
+    background-image: url("http://blog.hdwallsource.com/wp-content/uploads/2014/11/green-gradient-wallpaper-26051-26736-hd-wallpapers.jpg");
+}
 
 /*button that gives the dare*/
-/*#kind {
+#kind {
 	background-color: #4CAF50; 
     border: none;
     color: white;
     padding: 50px 32px;
     text-align: center;
     text-decoration: none;
+
+
+
     display: inline-block;
     font-size: 16px;
     align: center;
 }
+
+
+/*#bigbutton {
+	margin-top: 167px;
+}
+#greenHeader{
+	width: 100%;
+	height: 20.3% ;
+	background-color: #61a20c;
+	margin-top: 0px;
+	position: static;	
+}*/
+
 
 #header {
 	background-color: #61a20c;
@@ -22,10 +40,10 @@
 	width:100%;  
 	height: 10%; 
 	padding: 20px;  
-}*/
+}
 
 /*the word Dare*/
-/*#type {
+#type {
 	font-size: 50px;
 	padding: 10px;
 	margin-top: 1px;
@@ -39,11 +57,11 @@ header {
 footer { 
     display: block;
     text-align: center;
-}*/
+}
 
 /*- - - - - - - - navigation bar - - - - - - - - - - -*/
 
-/*ul {
+ul {
 	list-style-type: none;
     margin: 0;
     padding: 0;
@@ -70,7 +88,7 @@ li a:hover {
 }
 
 /*should change color of the current page*/
-/*li a.active {
+li a.active {
     background-color: #4CAF50;
     color: white;
 }
@@ -78,7 +96,7 @@ li a:hover {
 li a:hover:not(.active) {
     background-color: #ffe6b3;
     color: white;
-}*/
+}
 
 /*- - - - - - - - - - - can't find - - - - - - - - - - - - - - */
 /*
@@ -107,17 +125,18 @@ li a:hover:not(.active) {
 
 */
 /*- - - - - - - - - - - - memories.html - - - - - - - - - - */
-/*
-#title {
+
+/*#title {
 	font-size: 26px;
 	font-family: 'Tahoma', Geneva, sans-serif;
 	align: center;
-}
-*/
+}*/
+
 /*- - - - - - - - - - - mydare.html - - - - - - - - - - - -*/
 
 /*#currently {
 	align: center;
+<<<<<<< HEAD
 	background-color: #fff
 }*/
 
@@ -131,119 +150,19 @@ li a:hover:not(.active) {
 #createmem {
 	text-align: center;
 }
+=======
+}
+*/
+>>>>>>> origin/master
 /*- - - - - - - - - - dare.html template - - - - - - - - - */
 
-#thedare {
+/*#thedare {
 	align: center;
 	display: inline-block;
-	font-size: 90px;
-}
-
-
- /*- - - - - - - - - - - new head - - - - - - - - - - - - - */
- /*@import "compass/css3";
-
-$height-mask: 250px;
-/*
-// To regulate alpha is recommended to use gray scale.
-// Recomiendo utilizar escala de grises*/
-
-/*$darken: 60%;
-
-$color: rgb(255,255,255);
-$color-alpha: darken( $color, $darken );
-/*
-// Apply color here!
-// Todo el color que quieras!*/
-/*$color-base: rgb(0,0,0);
-
-html {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizelegibility;
-}
-
-html,
-body{
-  height: 100%;
-}
-
-body{
-  font-family: 'Open Sans', sans-serif;
-}
-
-.text{
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: $height-mask;
-  z-index: 10;
-}
-svg{
-  width: 100%;
-  height: inherit;
-  text{
-    / svg center text.
-    // centar text svg.
-    text-anchor: middle;
-  }
-  #alpha{
-    fill: $color-alpha;
-    /*//*animation: alpha 10s ease infinite;
-  }
-  #title{
-    letter-spacing: -2px;
-    font-size: 6em;
-    font-weight: 800;
-  }
-  #subtitle{
-    letter-spacing: 8px;
-    font-size: 1.2em;
-    font-weight: 300;
-    text-transform: uppercase;
-  }
-  #base{
-    fill: $color-base;
-    /* add the mask.
-    // aplicar máscara.
-    mask: url(#mask);
-  }
-}
-
-section.intro{
-  background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/953/mision.jpg) no-repeat top center;
-  background-size: cover;
-  position: relative;
-  width: 100%;
-  min-height: 100%;
-}*/
-
-/*@keyframes alpha {
-  50%{fill: #000;}
-}*//*
-/*- - - - - - - - - - - - - - - - - - - -NEW CSS - - - - - - - - - - -  - - - - - - - -*/
-
-/* IE9  - Also picked up by most modern browsers 
-::selection {
-    background:#E65B53;
-    color:#FFF;
-    text-shadow:none;
-}
-/* Safari & Chrome - Webkit Rendering 
-::-webkit-selection {
-    background:#E65B53;
-    color:#FFF;
-    text-shadow:none;
-}
-/* Mozilla based - Gecko Rendering *   
-::-moz-selection {
-     background:#E65B53;
-    color:#FFF;
-    text-shadow:none;
 }*/
 
 
+<<<<<<< HEAD
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:700);
 
 .hero {
@@ -516,3 +435,6 @@ li a{
   color:#E65B53;
 }
 
+=======
+ /*- - - - - - - - - - - head - - - - - - - - - - - - - */
+>>>>>>> origin/master

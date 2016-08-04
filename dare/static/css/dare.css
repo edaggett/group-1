@@ -1,17 +1,14 @@
 body {
-	background-color: #61a20c;
-	color: white;
-	position:absolute;        
-	top:0;        
-	left:0;        
-	width:100%;  
-	height: 10%; 
+    background-image: url("http://blog.hdwallsource.com/wp-content/uploads/2014/11/green-gradient-wallpaper-26051-26736-hd-wallpapers.jpg");
 }
+
 #dareForm {
 	text-align: center;
 }
 #thedare {
-	text-align: center;
+	text-align: center; 
+	font-size: 45px ;
+	font-weight: bold;
 }
 
 
