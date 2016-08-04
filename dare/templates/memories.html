@@ -109,10 +109,26 @@
 
  		 MEMORIES
 		<h1 id='title'> Memories </h1>
+
+		<table width="60%" height="60%" border="0" align="center">
+
 		{% for memory in memories %}
-  			{{memory.writing}}  
-  			<img src="/image?mid={{ memory.key.id() }}">                          
+		{% if loop.index %3==1 %}<tr> {% endif %}
+
+  	<td align="center" valign="center">
+  			<img src="/image?mid={{ memory.key.id() }}"> 
+  			<figcaption>{{memory.writing}}</figcaption>
+  			
+
+  	</td>
+ {% if loop.index %3==0 %}</tr> {% endif %}
+
 			{% endfor %}
+
+
+</table>
+
+
 			<br><br><br><br><br>
   <footer>
     <br><br><br>
