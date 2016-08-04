@@ -1,5 +1,6 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:700);
 
+
 .hero {
 text-align:center;
 margin:50px 0px;
@@ -12,6 +13,11 @@ h2 {
   font-size:21px;
   line-height: 28px;
 }
+
+#thedare {
+	font-size: 90px;
+}
+
 p {
   color: #FFFCE2;
 }
@@ -166,6 +172,21 @@ h2 {
   padding:0px 30px;
   }
 }*/
+
+
+#currently {
+	text-align: center;
+	background-color: #fff
+	
+}
+
+#createmem {
+	text-align: center;
+}
+
+.prepeat {
+	color: #fff;
+}
 
 #kind {
   background-color: #E65B53; 
