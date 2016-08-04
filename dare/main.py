@@ -13,10 +13,8 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-import cgi
-import urllib
+
 from google.appengine.api import users
-from google.appengine.api import images
 import webapp2
 import jinja2
 import random
@@ -30,7 +28,7 @@ from google.appengine.ext import ndb
 env=jinja2.Environment(loader=jinja2.FileSystemLoader("templates"))
 
 def findUser (user):
-    user = users.get_current_user()
+    user=users.get_current_user()
     find_dare_users=DareUsers.query().filter(DareUsers.email==user.email()).get()
     if find_dare_users==None:
         
@@ -66,6 +64,7 @@ class MainHandler(webapp2.RequestHandler):
         self.response.write(template.render(data))
 
 
+# find how to use dare variable again to print dare on mydare page
 class DareHandler(webapp2.RequestHandler):
     def get(self):
         template=env.get_template("dare.html")
@@ -88,13 +87,10 @@ class DareHandler(webapp2.RequestHandler):
         m=Memories(writing=self.request.get("textMemories"), pictures=self.request.get("picMemories"), owner=user.email())
         m.put()
         template=env.get_template("dare.html")
-        #self.response.out.write('<div><img src="/img?img_id=%s"></img>' %Memories.key.urlsafe())
-        #self.response.out.write('<blockquote>%s</blockquote></div>' %cgi.escape(Memories.writing))
         self.response.write(template.render())
         # results_template = env.get_template('results.html')
 
         
-
 
 class ImageHandler(webapp2.RequestHandler):
     def get(self):
@@ -122,8 +118,6 @@ class ImageHandler(webapp2.RequestHandler):
     
         # self.response.out.write(find_memories[i].pictures)
 
-
-        
 
 class UserDare(webapp2.RequestHandler):
     def post(self):
@@ -153,6 +147,7 @@ class CurrentHandler(webapp2.RequestHandler):
         self.response.write(template.render())
 
 
+
 class MemoryHandler(webapp2.RequestHandler):
     def get(self):
         user=users.get_current_user()
@@ -161,7 +156,8 @@ class MemoryHandler(webapp2.RequestHandler):
         memories=memories_query.filter(Memories.owner==user.email()).fetch()
         data = {"memories" : memories}
         self.response.write(template.render(data))
-        
+
+
 
 
     

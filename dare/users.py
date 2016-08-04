@@ -7,4 +7,5 @@ class DareUsers(ndb.Model):
 class Memories(ndb.Model):
 	pictures=ndb.BlobProperty(required=False)
 	writing=ndb.StringProperty(required=False)
-	owner=ndb.StringProperty() #DareUsers.email()
+	owner=ndb.StringProperty() #DareUsers.email
+

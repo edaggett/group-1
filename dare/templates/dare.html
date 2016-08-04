@@ -1,4 +1,4 @@
-<DOCTYPE html>
+<!-- <DOCTYPE html>
 <html>
 	<head>
 		<title>Dare To Be Kind</title>
@@ -24,32 +24,57 @@
 		<br>
 		
 		<!-- the dare is above verify below  -->
-		<form id="dareForm" method="post" action="/darecompleted">
+		<!-- <form id="dareForm" method="post" action="/darecompleted">
 		<link rel="stylesheet" href="/static/css/dare.css">
 		<div id='thedare'> {{dare}} </div>
+		</form>
 		<br>
 	</head>
-	<body>
-		<form id=dareForm method="post" action="/darecompleted">
+	<body> -->
+		<!-- <form id=dareForm method="post" action="/darecompleted">
 			Verify that you did the dare:
 			<br>
 			<input id="didDare" type="radio" name="completed_dare" value=True>Yes, I did complete dare. <br>
 			<input type="radio" name="completed_dare" value=False>No, I have not completed the dare. <br>	
 			<div id='submissions'><input type="submit" value="Submit"></div>
 		</form>
-		<br><br><br><br>
+		<br><br><br><br> -->
 
+<<<<<<< Updated upstream
 		<form method="post" action="/dare"  enctype="multipart/form-data">
+=======
+		<!-- <form method="post" action="/dare" enctype="multipart/form-data">
+>>>>>>> Stashed changes
 			Write a bit about your dare to add to your memories! 
 			<br><br>
 			<textarea name="textMemories" rows=10 cols=40></textarea> <!-- <input type="submit" id="submitTextMemory" value="Submit"/> -->
 		
+<<<<<<< Updated upstream
 
 		
 			<label>Or...Upload a picture or video to add to your memories!</label>
 			
 			<input type="file" name="picMemories" />
 			<input type="submit" id="submitPicMemory" value="Submit"/>
+=======
+		
+			<!-- <title>Files property test</title>  
+    		<script type="text/javascript">
+        	function getFiles() {
+            	// Get input element
+            	myFileList = document.getElementById("myfiles");
+            	// loop through files property, using length to get number of files chosen
+            	for (var i = 0; i < myFileList.files.length; i++) {
+                	// display them in the div
+                	document.getElementById("display").innerHTML += "<br/>" + myFileList.files[i].name ;
+           		}
+        	}
+			</script>  
+			<!-- <label>Or...Upload a picture or video to add to your memories!</label>
+			
+			<input type="file" name="picMemories" /> --> 
+			<!-- <input type="submit" id="submitPicMemory" value="Submit"/>
+>>>>>>> Stashed changes
 			<div id="display"></div>
 		</form>
 	</body>
@@ -83,6 +108,66 @@
 			</section>
 		</div>
 	</footer>
+</html>  -->
+
+<!-- - - - - - - - - - - - - - NEW HTML- - - - - - - - - - - - - - - - -  -->
+
+<DOCTYPE html>
+<html>
+  <head>
+    <title>Dare To Be Kind</title>  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/js/main.js"></script>
+    <link rel="stylesheet" href="/static/css/main.css">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700|Open+Sans:400,600,300,700' rel='stylesheet' type='text/css'>
+  </head>
+  <header>
+  	<div style="margin-top: 50px; margin-left:1230px">{{LogIn}}</div>
+    <nav role='navigation'>
+    <ul>
+      <li><a href="/">Home </a></li>
+      <li><a href="/mydare">My Dares</a></li>
+      <li><a href="/memories">Memories</a></li>
+      <li><a href="/about">About</a></li>
+    </ul>
+  </nav>  
+  </header>
+
+  <div class="hero">
+    <h2> 
+    <div id="tilt">
+        <div class="l">D</div>
+        <div class="o">A</div>
+        <div class="a">R</div>
+        <div class="d">E</div>
+  	</div> <br /><br><br><br/></h2>
+  </div> 
+  
+
+  <div class="content" style="text-align: center">
+  <br><br><br><br><br><br>
+ 
+  <!-- the dare is above verify below  -->
+	 <form id="dareForm" method="post" action="/darecompleted">
+		<div id='thedare'> {{dare}} </div>
+	</form>
+		<br>
+  <br><br><br><br><br><br><br>
+  </div>
+  
+  <footer>
+    <br><br><br>
+    <h2>Do Kind</h2>
+      <p>Oat cake fruitcake gummies gummi bears lemon drops gummies cake wafer. Bear claw powder caramels cake lemon drops dragée gummi bears. Jelly-o liquorice oat cake soufflé.Candy jelly beans toffee candy canes ice cream. Candy canes chupa chups sweet roll chupa chups dessert powder jelly-o. Danish jelly-o pastry tootsie roll cotton candy.</p>
+    <br><br><br>
+    <ul class="icons">
+      <li><a href="#" class="icon fa-twitter alt"><span class="label">Twitter</span></a></li>
+      <li><a href="#" class="icon fa-facebook alt"><span class="label">Facebook</span></a></li>
+      <li><a href="#" class="icon fa-instagram alt"><span class="label">Instagram</span></a></li>
+      <li><a href="#" class="icon fa-github alt"><span class="label">GitHub</span></a></li>
+      <li><a href="/webpage" class="button">Learn More</a></li>
+    </ul>
+  </footer>
 </html>
 
 	

@@ -1,4 +1,4 @@
-<DOCTYPE html>
+<!-- <DOCTYPE html>
 <html>
 	<head>
 		<title>Dare To Be Kind</title>	
@@ -7,16 +7,20 @@
 		<link rel="stylesheet" href="/static/css/main.css">
 		<header>
 			<div style="margin-top: 50px; margin-left:1230px">{{LogIn}}</div>
-			<div id='type'> Dare </div>  
-			<ul>
+
+<section class="intro"></section>
+
+
+			<!-- <div id='type'> Dare </div>   -->
+			<!-- <ul>
   				<li><a href="/">Home </a></li>
   				<li><a href="/mydare">My Dares  </a></li>
   				<li><a href="/memories">Memories </a></li>
   				<li style="float:right"><a class="active" href="/about">About</a></li>
 			</ul>
 		</header>
-	</head>
-
+	</head> -->
+<!-- 
 	<body style="text-align: center">	
 		<br>
 		<form>
@@ -26,9 +30,9 @@
 		<form method="post" action="/userdare">
 			Enter a dare: <input type="text" name="daredare"></input>
 		<input type="submit" id = "user_dare" value="Submit"></input>
-	</body>
+	</body> -->
 		
-	<br><br><br><br><br><br><br><br><br><br><br><br>
+	<!-- <br><br><br><br><br><br><br><br><br><br><br><br>
 	<footer>
 		<div id='foot'> 
 			<hr>
@@ -59,7 +63,67 @@
 		</div>
 	</footer>
 </html>
+ -->
 
 
+<!-- - - - - - - - - - -  NEW HTML - - - - - - - - - - - - - - - - - -  -->
 
+<DOCTYPE html>
+<html>
+  <head>
+    <title>Dare To Be Kind</title>  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/js/main.js"></script>
+    <link rel="stylesheet" href="/static/css/main.css">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700|Open+Sans:400,600,300,700' rel='stylesheet' type='text/css'>
+  </head>
+  <header>
+    <nav role='navigation'>
+    <ul>
+      <li><a href="/">Home </a></li>
+      <li><a href="/mydare">My Dares</a></li>
+      <li><a href="/memories">Memories</a></li>
+      <li><a href="/about">About</a></li>
+    </ul>
+  </nav>  
+  <div style="margin-top: 50px; margin-left:1230px">{{LogIn}}</div>
+  </header>
 
+  <div class="hero">
+    <h2> 
+    <div id="tilt">
+      <!-- <div class="wrap"> -->
+        <div class="l">D</div>
+        <div class="o">A</div>
+        <div class="a">R</div>
+        <div class="d">E</div>
+    <!-- </div>  -->
+  </div> <br /><br><br>Welcome to Dare.<br />We hope you enjoy the experience.</h2>
+    <p>Click below for a <span class="highlight">dare</span></p><br><br>
+    <!-- <p><a href="https://twitter.com/webnationlive" target="_blank">Follow us @webnationlive to stay connected</a></p> -->
+  </div> 
+  
+
+  <div class="content" style="text-align: center">
+  <br><br><br><br><br><br>
+    <a href="/dare" class="myButton">Dare</a>
+    <!-- <div style="text-align: center;"><button id='kind' type="button"> DARE </button></div> -->
+  <br><br><br><br><br><br><br>
+  </div>
+  <footer>
+    <br><br><br>
+    <h2>Do Kind</h2>
+      <p>Oat cake fruitcake gummies gummi bears lemon drops gummies cake wafer. Bear claw powder caramels cake lemon drops dragée gummi bears. Jelly-o liquorice oat cake soufflé.Candy jelly beans toffee candy canes ice cream. Candy canes chupa chups sweet roll chupa chups dessert powder jelly-o. Danish jelly-o pastry tootsie roll cotton candy.</p>
+    <br><br><br>
+    <ul class="icons">
+      <li><a href="#" class="icon fa-twitter alt"><span class="label">Twitter</span></a></li>
+      <li><a href="#" class="icon fa-facebook alt"><span class="label">Facebook</span></a></li>
+      <li><a href="#" class="icon fa-instagram alt"><span class="label">Instagram</span></a></li>
+      <li><a href="#" class="icon fa-github alt"><span class="label">GitHub</span></a></li>
+      <li><a href="/webpage" class="button">Learn More</a></li>
+    </ul>
+        <!-- <ul class="actions" style="float: right";>
+              <li><a href="/webpage" class="button">Learn More</a></li>
+        </ul> -->
+  </footer>
+</html>
