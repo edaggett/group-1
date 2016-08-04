@@ -138,9 +138,8 @@
   <div id="currently"
 		Current Dare: {{dare}}
 		<form id="dareForm" method="post" action="/darecompleted">
-			Have you completed your dare :
+			Have you completed your dare {{dare}}:
 			<br>
-			{{dare}}<br>
 			<input id="didDare" type="radio" name="completed_dare" value=True>Yes, I did the dare. <br>
 			<input type="radio" name="completed_dare" value=False>No, I have not done the dare. <br>	
 			<div id='submissions'><input type="submit" value="Submit"></div>
