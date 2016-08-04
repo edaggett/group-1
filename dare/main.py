@@ -68,6 +68,7 @@ class MainHandler(webapp2.RequestHandler):
 class DareHandler(webapp2.RequestHandler):
     def get(self):
         template=env.get_template("dare.html")
+
             
         dare_query=Dares.query()
         dare_results=dare_query.fetch()
@@ -80,6 +81,7 @@ class DareHandler(webapp2.RequestHandler):
         dare["dare"]=dare_result.dare
         self.response.write(template.render(dare))
 
+
     def post(self):
         user = users.get_current_user()
         # d=DareUsers(email=user.email())
@@ -90,7 +92,7 @@ class DareHandler(webapp2.RequestHandler):
         self.response.write(template.render())
         # results_template = env.get_template('results.html')
 
-        
+
 
 class ImageHandler(webapp2.RequestHandler):
     def get(self):
@@ -144,6 +146,18 @@ class AboutHandler(webapp2.RequestHandler):
 class CurrentHandler(webapp2.RequestHandler):
     def get(self):
         template=env.get_template("mydare.html")
+    
+        dare_query=Dares.query()
+        dare_results=dare_query.fetch()
+        dare_result=dare_results[random.randint(0,len(dare_results) - 1)]
+
+        print len(dare_results)
+
+        dare={}
+        dare["number"]=dare_result.dare_number
+        dare["dare"]=dare_result.dare
+        self.response.write(template.render(dare))
+
         self.response.write(template.render())
 
 
