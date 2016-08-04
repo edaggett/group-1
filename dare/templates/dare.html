@@ -283,14 +283,15 @@ Write about your dare to add to your memories!
 		<br><br><br><br>
 
 		<br><br><br><br>
-		<div id="createmem"> If you have completed your dare, create a memory! It's simple: either write about your experience doing your dare, add a picture, or do both!<br><br>
+		<div id="createmem"> If you have completed your dare, create a memory! It's simple: upload a picture and caption and watch your memories grow!<br><br>
 		<form method="post" action="/dare" enctype="multipart/form-data">
-			Write a bit about your dare to add to your memories! 
 			<br><br>
-			
-			<textarea name="textMemories" rows=10 cols=40></textarea> 
+			Add a caption! 
 			<br>
-			<label>Or...Upload a picture to add to your memories!</label>
+			<textarea class="textbox" name="textMemories" rows=10 cols=40></textarea> 
+			<br>
+			<br>
+			<label>Upload a picture to add to your memories!</label>
 			<input type="file" name="picMemories"/>
 			<input type="submit" id="submitPicMemory" value="Submit"/>
 			<div id="display"></div>

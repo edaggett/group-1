@@ -68,8 +68,6 @@ class MainHandler(webapp2.RequestHandler):
 
 
 
-
-
 # find how to use dare variable again to print dare on mydare page
 class DareHandler(webapp2.RequestHandler):
     def get(self):
