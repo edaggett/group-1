@@ -196,7 +196,10 @@ h2 {
 }
 
 .prepeat {
+	align: center;
+	text-align: center;
 	color: #fff;
+	
 }
 
 #kind {
